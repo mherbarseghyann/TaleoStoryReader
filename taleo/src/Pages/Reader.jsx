@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../App.css";
 
-function Read() {
+function Reader() {
   const [currentPage, setCurrentPage] = useState(0);
 
   const story =
@@ -56,4 +56,4 @@ function Read() {
   );
 }
 
-export default Read;
+export default Reader;

@@ -1,11 +1,11 @@
 import './App.css'
-import Read from './components/Read'
+import Reader from './Pages/Reader'
 
 function App() {
 
   return (
     <>
-      <Read/>
+      <Reader/>
     </>
   )
 }
