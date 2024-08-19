@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import StoryCard from '../components/StoryCard/StoryCard'
 import { Link } from 'react-router-dom';
+import axios from 'axios'
+
 
 function HomePage() {
 
-  const data = [
+  const olddata = [
     {
       title: 'The Mysterious Forest',
       description: 'A thrilling tale of adventure and mystery in an enchanted forest.',
@@ -27,6 +29,15 @@ function HomePage() {
       tags: ['Horror', 'Suspense']
     }
   ];
+
+  const [data, setData] = useState([])
+
+  useEffect(()=>{
+    axios
+      .get("http://localhost:3001/get")
+      .then((result) => setData(result.data))
+      .catch((err) => console.log(err));
+  },[])
 
 
   return (
