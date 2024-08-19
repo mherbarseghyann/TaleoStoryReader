@@ -34,6 +34,7 @@ function HomePage() {
       <Link to="/create">Create story</Link>
       <h2>Stories</h2>
       {data.map((story, index) => (
+        <Link to='/story'>
         <StoryCard
           key={index}
           title={story.title}
@@ -41,6 +42,7 @@ function HomePage() {
           wordsCount={story.wordsCount}
           author={story.author}
         />
+        </Link>
       ))}
     </div>
   )
