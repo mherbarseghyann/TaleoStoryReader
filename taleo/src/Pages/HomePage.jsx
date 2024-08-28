@@ -5,31 +5,6 @@ import axios from 'axios'
 
 
 function HomePage() {
-
-  const olddata = [
-    {
-      title: 'The Mysterious Forest',
-      description: 'A thrilling tale of adventure and mystery in an enchanted forest.',
-      wordsCount: 1200,
-      author: 'Jane Doe',
-      tags: ['Adventure', 'Fantasy', 'Mystery']
-    },
-    {
-      title: 'Lost in Time',
-      description: 'A journey through time that uncovers secrets from the past and future.',
-      wordsCount: 1500,
-      author: 'John Smith',
-      tags: ['Sci-Fi', 'Time Travel']
-    },
-    {
-      title: 'The Silent City',
-      description: 'A haunting story of a deserted city with a dark secret.',
-      wordsCount: 900,
-      author: 'Alice Johnson',
-      tags: ['Horror', 'Suspense']
-    }
-  ];
-
   const [data, setData] = useState([])
 
   useEffect(()=>{
@@ -45,8 +20,9 @@ function HomePage() {
       <Link to="/create">Create story</Link>
       <h2>Stories</h2>
       {data.map((story, index) => (
-        <Link to='/story'>
+        <Link key={index} to={`/story/${story._id}`}>
         <StoryCard
+          data = {data}
           key={index}
           title={story.title}
           description={story.description}

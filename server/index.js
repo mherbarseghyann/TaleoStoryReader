@@ -17,6 +17,17 @@ app.get("/get", (req, res)=>{
     .catch(err => res.json(err))
 })
 
+app.get("/story/:id", (req, res) => {
+  const { id } = req.params;
+  StoryModel.findById(id)
+    .then(result => {
+        res.json(result)
+    })
+    .catch(err => res.status(500).json({ error: err.message }));
+
+});
+
+
 app.post("/create", (req, res)=>{
     StoryModel.create({
         title: req.body.title,
