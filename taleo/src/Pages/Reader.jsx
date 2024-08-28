@@ -48,10 +48,10 @@ function Reader() {
   return (
     <div className="container">
       <Link to='/'>Home</Link>
-      <h2>Current Book</h2>
+      <h2>{story ? story.title : 'Loading...'}</h2>
       <div className="book">
-        <div className="page">{page1}</div>
-        <div className="page">{page2}</div>
+        <div onClick={turnLeft} className="page">{page1}</div>
+        <div onClick={turnRight} className="page">{page2}</div>
       </div>
       <p className="page-number">
         Page {currentPage + 1} & {currentPage + 2}
