@@ -26,8 +26,8 @@ function HomePage() {
           key={index}
           title={story.title}
           description={story.description}
-          wordsCount={story.wordsCount}
-          author={story.author}
+          wordsCount={story.story.split(' ').length}
+          author="Mher Barseghyan"
         />
         </Link>
       ))}
