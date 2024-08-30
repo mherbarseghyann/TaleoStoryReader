@@ -6,9 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 
-import HomePage from './Pages/HomePage.jsx'
-import Reader from './Pages/Reader.jsx'
-import CreateStory from './Pages/CreateStory/CreateStory.jsx'
+import HomePage from './components/HomePage/HomePage.jsx'
+import Reader from './components/Reader/Reader.jsx'
+import CreateStory from './components/CreateStory/CreateStory.jsx'
 
 const router = createBrowserRouter([
   {

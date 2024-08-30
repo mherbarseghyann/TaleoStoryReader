@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import StoryCard from '../components/StoryCard/StoryCard';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
-import Popup from '../components/PopUp/PopUp';
+import { Link } from 'react-router-dom';
+
+import Popup from '../PopUp/PopUp';
+import StoryCard from '../StoryCard/StoryCard';
 
 function HomePage() {
   const [data, setData] = useState([]);
@@ -49,18 +50,15 @@ function HomePage() {
       <h2>Stories</h2>
       {data.map((story, index) => (
         <div key={index} className="story-card-wrapper">
-          <Link to={`/story/${story._id}`}>
             <StoryCard
-              data={data}
-              key={index}
+              id={story._id}
               title={story.title}
               description={story.description}
               wordsCount={story.story.split(' ').length}
               author="Mher Barseghyan"
+              onEdit={() => handleEdit(story)}
+              onDelete={() => handleDelete(story)}
             />
-          </Link>
-          <button onClick={() => handleEdit(story)}>Edit</button>
-          <button onClick={() => handleDelete(story)}>Delete</button>
         </div>
       ))}
 
