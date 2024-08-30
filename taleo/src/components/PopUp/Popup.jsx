@@ -23,7 +23,7 @@ const Popup = ({
 
         {clickedBtn === "delete" ? (
           <div>
-            <h3>{story ? `Delete ${story.title}` : ""}</h3>
+            <h3>{story ? `Are you sure you want to delete ${story.title}?` : ""}</h3>
             <button onClick={() => onConfirmDelete(story._id)}>
               Confirm Delete
             </button>

@@ -11,6 +11,7 @@
   justify-content: space-between;
   transition: transform 0.2s ease;
   cursor: pointer;
+  height:250px
 }
 
 .card-container:hover {

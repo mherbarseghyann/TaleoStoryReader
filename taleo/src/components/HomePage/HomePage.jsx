@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Popup from '../PopUp/PopUp';
 import StoryCard from '../StoryCard/StoryCard';
+import './HomePage.css'
 
 function HomePage() {
   const [data, setData] = useState([]);
@@ -55,6 +56,7 @@ function HomePage() {
     <div className="story-card-container">
       <Link to="/create">Create story</Link>
       <h2>Stories</h2>
+      <div className='grid-container'>
       {data.map((story, index) => (
         <div key={index} className="story-card-wrapper">
           <StoryCard
@@ -68,6 +70,7 @@ function HomePage() {
           />
         </div>
       ))}
+      </div>
   
       <Popup
         story={selectedStory}
