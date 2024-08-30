@@ -27,6 +27,13 @@ app.get("/story/:id", (req, res) => {
 
 });
 
+app.delete("/delete/:id", (req,res)=>{
+    const { id } = req.params
+    StoryModel.findByIdAndDelete({ _id: id })
+        .then(result => res.json(result))
+        .catch(err => res.json(err))
+})
+
 
 app.post("/create", (req, res)=>{
     StoryModel.create({

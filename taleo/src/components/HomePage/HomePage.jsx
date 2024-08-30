@@ -9,6 +9,7 @@ function HomePage() {
   const [data, setData] = useState([]);
   const [selectedStory, setSelectedStory] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
+  const [clickedBtn, setClickedBtn] = useState()
 
   useEffect(() => {
     axios
@@ -23,6 +24,7 @@ function HomePage() {
   };
 
   const handleDelete = (story) => {
+    setClickedBtn('delete')
     setSelectedStory(story);
     setShowPopup(true);
   };
@@ -32,14 +34,19 @@ function HomePage() {
     setSelectedStory(null);
   };
 
-  const handleConfirmDelete = () => {
-    // Add your delete functionality here
-    console.log('Deleting story:', selectedStory);
-    handlePopupClose();
-  };
+  const handleConfirmDelete = (id) => {
+    axios
+      .delete(`http://localhost:3001/delete/${id}`)
+      .then((result) => {
+        setData(data.filter(story => story._id !== id));
+        console.log('Deleted story:', id);
+        handlePopupClose();
+      })
+      .catch((err) => console.log(err));
+    }
 
   const handleConfirmEdit = () => {
-    // Add your edit functionality here
+    // edit functionality here
     console.log('Editing story:', selectedStory);
     handlePopupClose();
   };
@@ -50,27 +57,28 @@ function HomePage() {
       <h2>Stories</h2>
       {data.map((story, index) => (
         <div key={index} className="story-card-wrapper">
-            <StoryCard
-              id={story._id}
-              title={story.title}
-              description={story.description}
-              wordsCount={story.story.split(' ').length}
-              author="Mher Barseghyan"
-              onEdit={() => handleEdit(story)}
-              onDelete={() => handleDelete(story)}
-            />
+          <StoryCard
+            id={story._id} 
+            title={story.title}
+            description={story.description}
+            wordsCount={story.story.split(' ').length}
+            author="Mher Barseghyan"
+            onEdit={() => handleEdit(story)}
+            onDelete={() => handleDelete(story)}  
+          />
         </div>
       ))}
-
+  
       <Popup
         story={selectedStory}
         show={showPopup}
+        clickedBtn = {clickedBtn}
         onClose={handlePopupClose}
         onConfirmEdit={handleConfirmEdit}
-        onConfirmDelete={handleConfirmDelete}
+        onConfirmDelete={handleConfirmDelete} 
       />
     </div>
-  );
+    )
 }
 
 export default HomePage;
