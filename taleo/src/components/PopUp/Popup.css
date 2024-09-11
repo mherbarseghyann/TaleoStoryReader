@@ -1,24 +1,107 @@
- /* src/components/Popup/Popup.css */
+
 .popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popup-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  position: relative;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.popup-content input,
+.popup-content textarea {
+  width: calc(100% - 20px);
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.popup-content input:focus,
+.popup-content textarea:focus {
+  border-color: #007bff;
+}
+
+.popup-content textarea {
+  resize: vertical;
+}
+
+.popup-content .description-textarea {
+  min-height: 60px; 
+  max-height: 100px;
+}
+
+.popup-content .story-textarea {
+  min-height: 300px; 
+  height: 400px;
+  max-height: 600px;
+  resize: vertical;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* Add space between buttons */
+  margin-top: 20px;
+}
+
+.popup-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+  transition: background-color 0.2s ease;
+}
+
+.popup-buttons button:hover {
+  background-color: #0056b3;
+}
+
+.popup-buttons button:active {
+  background-color: #004494;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  .popup-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
+  to {
+    opacity: 1;
   }
-  
-  .popup-content button {
-    margin: 5px;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
   }
-  
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
